@@ -12,10 +12,10 @@ class Character extends GObject {
     super.update();
 
     if (KeyManager.KeysDown['A']) {
-      X -= Speed;
+      Coords.x -= Speed;
     }
     if (KeyManager.KeysDown['D']) {
-      X += Speed;
+      Coords.x += Speed;
     }
   }
   

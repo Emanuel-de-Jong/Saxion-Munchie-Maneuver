@@ -2,32 +2,28 @@ class GObject extends GBase {
   public ArrayList<GShape> GShapes;
 
   public PImage Img;
-  public float ImgWidth;
-  public float ImgHeight;
+  public PVector ImgSize;
   
-  public float X;
-  public float Y;
+  public PVector Coords;
   
   public GObject(float x, float y) {
-    X = x;
-    Y = y;
+    Coords = new PVector(x, y);
     
     GShapes = new ArrayList<GShape>();
   }
 
   public void setImg(String imgPath, float imgWidth, float imgHeight) {
     Img = loadImage(imgPath);
-    ImgWidth = imgWidth;
-    ImgHeight = imgHeight;
+    ImgSize = new PVector(imgWidth, imgHeight);
   }
   
   public void display() {
     if (Img != null) {
-      image(Img, X, Y, ImgWidth, ImgHeight);
+      image(Img, Coords.x, Coords.y, ImgSize.x, ImgSize.y);
     }
 
     for (GShape gShape : GShapes) {
-      gShape.display(X, Y);
+      gShape.display(Coords);
     }
   }
 

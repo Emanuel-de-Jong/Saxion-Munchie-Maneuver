@@ -7,10 +7,10 @@ class GShapeCircle extends GShape {
     Size = size;
   }
   
-  public void display(float baseX, float baseY) {
+  public void display(PVector baseCoords) {
     stroke(0);
     strokeWeight(3);
     fill(color(0,0,0));
-    circle(baseX + X1, baseY + Y1, Size);
+    circle(baseCoords.x + Coords1.x, baseCoords.y + Coords1.y, Size);
   }
 }

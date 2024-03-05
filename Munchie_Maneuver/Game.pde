@@ -3,7 +3,7 @@ class Game extends GBase {
   
   public Game() {
     MainCharacter = new Character(width/2, 0);
-    MainCharacter.Y = height - MainCharacter.ImgHeight;
+    MainCharacter.Coords.y = height - MainCharacter.ImgSize.y;
   }
   
   public void display() {
