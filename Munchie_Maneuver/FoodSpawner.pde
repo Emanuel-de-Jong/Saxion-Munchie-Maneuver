@@ -16,8 +16,15 @@ class FoodSpawner extends GBase {
 
         x += speed * direction;
 
-        if (x < 0 || x > width) {
+        if (floor(random(100)) == 1) {
             direction *= -1;
+        }
+
+        if (x < 0) {
+            direction = 1;
+        }
+        else if (x > width) {
+            direction = -1;
         }
         
         if (millis() - lastFoodLineCircleSpawn > spawnRate) {
