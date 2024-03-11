@@ -11,18 +11,4 @@ class Game extends GBase {
     FoodLineCircles.add(new FoodLineCircle(50, 20));
     FoodLineCircles.add(new FoodLineCircle(50, 40));
   }
-  
-  public void display() {
-    MainCharacter.display();
-    FoodLineCircles.forEach(flc -> flc.display());
-  }
-
-  public void update() {
-    MainCharacter.update();
-    FoodLineCircles.forEach(flc -> flc.update());
-  }
-  
-  public void handleKeyPressed() {
-    MainCharacter.handleKeyPressed();
-  }
 }

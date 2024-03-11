@@ -20,6 +20,8 @@ void draw() {
   if (game != null) {
     game.display();
   }
+
+  Globals.GBasses.forEach(gBase -> gBase.display());
 }
 
 void update() {
@@ -27,6 +29,8 @@ void update() {
     if (game != null) {
       game.update();
     }
+    
+    Globals.GBasses.forEach(gBase -> gBase.update());
     
     delay(int(1 / UPDATE_RATE * 1000));
   }
@@ -38,8 +42,12 @@ void keyPressed() {
   if (game != null) {
     game.handleKeyPressed();
   }
+
+  Globals.GBasses.forEach(gBase -> gBase.handleKeyPressed());
 } 
 
 void keyReleased() {
   KeyManager.handleKeyReleased(keyCode);
+
+  Globals.GBasses.forEach(gBase -> gBase.handleKeyReleased());
 }

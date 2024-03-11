@@ -17,8 +17,4 @@ class Character extends GObject {
       Coords.x += Speed;
     }
   }
-  
-  public void handleKeyPressed() {
-    super.handleKeyPressed();
-  }
 }

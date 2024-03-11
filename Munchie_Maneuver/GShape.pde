@@ -4,12 +4,10 @@ class GShape extends GBase {
   public float Y1;
   
   public GShape(float x1, float y1) {
+    super();
+    
     Coords1 = new PVector(x1, y1);
   }
   
   public void display(PVector baseCoords) {}
-
-  public void update() {}
-  
-  public void handleKeyPressed() {}
 }

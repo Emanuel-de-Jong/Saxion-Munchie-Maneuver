@@ -7,6 +7,8 @@ class GObject extends GBase {
   public PVector Coords;
   
   public GObject(float x, float y) {
+    super();
+    
     Coords = new PVector(x, y);
     
     GShapes = new ArrayList<GShape>();
@@ -24,18 +26,6 @@ class GObject extends GBase {
 
     for (GShape gShape : GShapes) {
       gShape.display(Coords);
-    }
-  }
-
-  public void update() {
-    for (GShape gShape : GShapes) {
-      gShape.update();
-    }
-  }
-  
-  public void handleKeyPressed() {
-    for (GShape gShape : GShapes) {
-      gShape.handleKeyPressed();
     }
   }
 }
