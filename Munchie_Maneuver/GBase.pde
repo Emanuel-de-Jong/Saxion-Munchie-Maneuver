@@ -7,11 +7,11 @@ class GBase {
         Globals.GBasses.remove(this);
     }
 
-    public void display() {}
+    public void draw() {}
 
     public void update() {}
   
-    public void handleKeyPressed() {}
+    public void keyPressed() {}
   
-    public void handleKeyReleased() {}
+    public void keyReleased() {}
 }

@@ -9,5 +9,5 @@ class GShape extends GBase {
     Coords1 = new PVector(x1, y1);
   }
   
-  public void display(PVector baseCoords) {}
+  public void draw(PVector baseCoords) {}
 }

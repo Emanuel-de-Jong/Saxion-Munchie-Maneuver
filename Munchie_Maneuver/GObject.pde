@@ -19,13 +19,13 @@ class GObject extends GBase {
     ImgSize = new PVector(imgWidth, imgHeight);
   }
   
-  public void display() {
+  public void draw() {
     if (Img != null) {
       image(Img, Coords.x, Coords.y, ImgSize.x, ImgSize.y);
     }
 
     for (GShape gShape : GShapes) {
-      gShape.display(Coords);
+      gShape.draw(Coords);
     }
   }
 }

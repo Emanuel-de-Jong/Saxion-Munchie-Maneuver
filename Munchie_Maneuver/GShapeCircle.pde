@@ -7,8 +7,8 @@ class GShapeCircle extends GShape {
     Size = size;
   }
   
-  public void display(PVector baseCoords) {
-    super.display();
+  public void draw(PVector baseCoords) {
+    super.draw();
     
     stroke(0);
     strokeWeight(3);

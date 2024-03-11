@@ -18,10 +18,10 @@ void draw() {
   background(255);
   
   if (game != null) {
-    game.display();
+    game.draw();
   }
 
-  Globals.GBasses.forEach(gBase -> gBase.display());
+  Globals.GBasses.forEach(gBase -> gBase.draw());
 }
 
 void update() {
@@ -37,17 +37,17 @@ void update() {
 }
 
 void keyPressed() {
-  KeyManager.handleKeyPressed(keyCode);
+  KeyManager.keyPressed(keyCode);
 
   if (game != null) {
-    game.handleKeyPressed();
+    game.keyPressed();
   }
 
-  Globals.GBasses.forEach(gBase -> gBase.handleKeyPressed());
+  Globals.GBasses.forEach(gBase -> gBase.keyPressed());
 } 
 
 void keyReleased() {
-  KeyManager.handleKeyReleased(keyCode);
+  KeyManager.keyReleased(keyCode);
 
-  Globals.GBasses.forEach(gBase -> gBase.handleKeyReleased());
+  Globals.GBasses.forEach(gBase -> gBase.keyReleased());
 }
