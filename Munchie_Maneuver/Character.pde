@@ -5,7 +5,6 @@ class Character extends GObject {
     super(x, y);
     
     setImg("Character.png", 100, 80);
-    GShapes.add(new GShapeCircle(5, 5, 10));
   }
 
   public void update() {
