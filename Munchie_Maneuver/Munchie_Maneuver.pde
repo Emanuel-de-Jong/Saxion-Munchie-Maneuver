@@ -1,12 +1,16 @@
 final float FRAME_RATE = 60;
 final float UPDATE_RATE = 100;
 
+Thread updateThread;
+
 KeyManager keyManager;
 Game game;
 
 void setup() {
+    updateThread = new Thread(() -> update());
+    updateThread.start();
+
     frameRate(FRAME_RATE);
-    thread("update");
     
     size(800, 600);
     fill(0, 0, 255);
