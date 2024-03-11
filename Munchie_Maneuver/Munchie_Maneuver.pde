@@ -1,5 +1,5 @@
 final float FRAME_RATE = 60;
-final int UPDATE_RATE = 60;
+final int UPDATE_RATE = 100;
 
 Game game;
 

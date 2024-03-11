@@ -4,7 +4,7 @@ class Character extends GObject {
   public Character(float x, float y) {
     super(x, y);
     
-    setImg("character.png", 100, 100);
+    setImg("Character.png", 100, 80);
     GShapes.add(new GShapeCircle(5, 5, 10));
   }
 

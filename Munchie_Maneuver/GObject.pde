@@ -13,7 +13,7 @@ class GObject extends GBase {
   }
 
   public void setImg(String imgPath, float imgWidth, float imgHeight) {
-    Img = loadImage(imgPath);
+    Img = loadImage("Assets/Images/" + imgPath);
     ImgSize = new PVector(imgWidth, imgHeight);
   }
   
