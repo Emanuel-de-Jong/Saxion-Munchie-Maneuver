@@ -1,5 +1,5 @@
 class Character extends GObject {
-  public float Speed = 20;
+  public float Speed = 3;
   
   public Character(float x, float y) {
     super(x, y);

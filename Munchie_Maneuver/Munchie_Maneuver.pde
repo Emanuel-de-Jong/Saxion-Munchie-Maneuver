@@ -1,5 +1,5 @@
 final float FRAME_RATE = 60;
-final int UPDATE_RATE = 100;
+final float UPDATE_RATE = 100;
 
 Game game;
 
@@ -28,7 +28,7 @@ void update() {
       game.update();
     }
     
-    delay(UPDATE_RATE);
+    delay(int(1 / UPDATE_RATE * 1000));
   }
 }
 
