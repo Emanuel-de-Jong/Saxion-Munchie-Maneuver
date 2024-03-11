@@ -5,7 +5,7 @@ class FoodSpawner extends GBase {
     public int spawnRate = 200;
 
     private int lastFoodLineCircleSpawn;
-    private int x = 0;
+    private int x = width / 2;
 
     public FoodSpawner() {
         lastFoodLineCircleSpawn = millis();
@@ -20,10 +20,10 @@ class FoodSpawner extends GBase {
             direction *= -1;
         }
 
-        if (x < 0) {
+        if (x < 10) {
             direction = 1;
         }
-        else if (x > width) {
+        else if (x > width - 10) {
             direction = -1;
         }
         

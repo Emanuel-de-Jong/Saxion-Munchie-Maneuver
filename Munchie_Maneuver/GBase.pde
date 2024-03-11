@@ -12,4 +12,6 @@ class GBase {
     public void keyPressed() {}
   
     public void keyReleased() {}
+
+    public void mouseMoved() {}
 }

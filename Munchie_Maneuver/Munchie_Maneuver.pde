@@ -46,3 +46,9 @@ void keyReleased() {
         gBase.keyReleased();
     }
 }
+
+void mouseMoved() {
+    for (GBase gBase : Globals.GBasses) {
+        gBase.mouseMoved();
+    }
+}

@@ -17,4 +17,8 @@ class Character extends GObject {
             Coords.x += Speed;
         }
     }
+
+    public void mouseMoved() {
+        Coords.x = mouseX - (ImgSize.x / 2);
+    }
 }
