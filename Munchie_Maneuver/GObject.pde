@@ -20,12 +20,10 @@ class GObject extends GBase {
   }
   
   public void draw() {
+    super.draw();
+
     if (Img != null) {
       image(Img, Coords.x, Coords.y, ImgSize.x, ImgSize.y);
-    }
-
-    for (GShape gShape : GShapes) {
-      gShape.draw(Coords);
     }
   }
 }

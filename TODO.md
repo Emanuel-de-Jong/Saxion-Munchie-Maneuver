@@ -1,4 +1,2 @@
-- Make KeyManager GBase.
-- Give GObject to GShape and remove the param from display().
 - Make all script 4 spaces.
 - Infinite falling FoodLineCricles.

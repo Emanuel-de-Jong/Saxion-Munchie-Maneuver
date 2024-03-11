@@ -1,6 +1,7 @@
 final float FRAME_RATE = 60;
 final float UPDATE_RATE = 100;
 
+KeyManager keyManager;
 Game game;
 
 void setup() {
@@ -11,25 +12,18 @@ void setup() {
   fill(0, 0, 255);
   stroke(0, 255, 255);
 
+  keyManager = new KeyManager();
   game = new Game();
 }
 
 void draw() {
   background(255);
-  
-  if (game != null) {
-    game.draw();
-  }
 
   Globals.GBasses.forEach(gBase -> gBase.draw());
 }
 
 void update() {
   while (true) {
-    if (game != null) {
-      game.update();
-    }
-    
     Globals.GBasses.forEach(gBase -> gBase.update());
     
     delay(int(1 / UPDATE_RATE * 1000));
@@ -38,10 +32,6 @@ void update() {
 
 void keyPressed() {
   KeyManager.keyPressed(keyCode);
-
-  if (game != null) {
-    game.keyPressed();
-  }
 
   Globals.GBasses.forEach(gBase -> gBase.keyPressed());
 } 
