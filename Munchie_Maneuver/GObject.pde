@@ -21,7 +21,7 @@ class GObject extends GBase {
     }
     
     public void setImg(String imgPath, float imgWidth, float imgHeight) {
-        Img = loadImage("Assets/Images/" + imgPath);
+        Img = loadImage(dataPath("/imgs/" + imgPath));
         ImgSize = new PVector(imgWidth, imgHeight);
     }
     
