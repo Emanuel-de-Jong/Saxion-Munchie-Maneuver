@@ -1,45 +1,29 @@
 class GObject extends GBase {
-  public ArrayList<GShape> GShapes;
-
-  public PImage Img;
-  public float ImgWidth;
-  public float ImgHeight;
-  
-  public float X;
-  public float Y;
-  
-  public GObject(float x, float y) {
-    X = x;
-    Y = y;
+    public ArrayList<GShape> GShapes;
     
-    GShapes = new ArrayList<GShape>();
-  }
-
-  public void setImg(String imgPath, float imgWidth, float imgHeight) {
-    Img = loadImage(imgPath);
-    ImgWidth = imgWidth;
-    ImgHeight = imgHeight;
-  }
-  
-  public void display() {
-    if (Img != null) {
-      image(Img, X, Y, ImgWidth, ImgHeight);
+    public PImage Img;
+    public PVector ImgSize;
+    
+    public PVector Coords;
+    
+    public GObject(float x, float y) {
+        super();
+        
+        Coords = new PVector(x, y);
+        
+        GShapes = new ArrayList<GShape>();
     }
-
-    for (GShape gShape : GShapes) {
-      gShape.display(X, Y);
+    
+    public void setImg(String imgPath, float imgWidth, float imgHeight) {
+        Img = loadImage("Assets/Images/" + imgPath);
+        ImgSize = new PVector(imgWidth, imgHeight);
     }
-  }
-
-  public void update() {
-    for (GShape gShape : GShapes) {
-      gShape.update();
+    
+    public void draw() {
+        super.draw();
+        
+        if (Img != null) {
+            image(Img, Coords.x, Coords.y, ImgSize.x, ImgSize.y);
+        }
     }
-  }
-  
-  public void handleKeyPressed() {
-    for (GShape gShape : GShapes) {
-      gShape.handleKeyPressed();
-    }
-  }
 }

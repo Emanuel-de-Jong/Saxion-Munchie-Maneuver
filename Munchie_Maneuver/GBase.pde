@@ -1,9 +1,17 @@
 class GBase {
-    public void display() {}
+    public GBase() {
+        Globals.GBasses.add(this);
+    }
+
+    protected void finalize() {
+        Globals.GBasses.remove(this);
+    }
+
+    public void draw() {}
 
     public void update() {}
   
-    public void handleKeyPressed() {}
+    public void keyPressed() {}
   
-    public void handleKeyReleased() {}
+    public void keyReleased() {}
 }

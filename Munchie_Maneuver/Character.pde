@@ -1,25 +1,20 @@
 class Character extends GObject {
-  public float Speed = 20;
-  
-  public Character(float x, float y) {
-    super(x, y);
+    public float Speed = 3;
     
-    setImg("character.png", 100, 100);
-    GShapes.add(new GShapeCircle(5, 5, 10));
-  }
-
-  public void update() {
-    super.update();
-
-    if (KeyManager.KeysDown['A']) {
-      X -= Speed;
+    public Character(float x, float y) {
+        super(x, y);
+        
+        setImg("Character.png", 100, 80);
     }
-    if (KeyManager.KeysDown['D']) {
-      X += Speed;
+    
+    public void update() {
+        super.update();
+        
+        if (KeyManager.KeysDown['A']) {
+            Coords.x -= Speed;
+        }
+        if (KeyManager.KeysDown['D']) {
+            Coords.x += Speed;
+        }
     }
-  }
-  
-  public void handleKeyPressed() {
-    super.handleKeyPressed();
-  }
 }
