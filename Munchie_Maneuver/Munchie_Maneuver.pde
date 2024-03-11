@@ -1,4 +1,4 @@
-final float FRAME_RATE = 60;
+final float FRAME_RATE = 100;
 
 KeyManager keyManager;
 Game game;
