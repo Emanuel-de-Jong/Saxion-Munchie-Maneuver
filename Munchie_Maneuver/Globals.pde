@@ -1,4 +1,6 @@
+import java.util.concurrent.CopyOnWriteArrayList;
+
 static class Globals {
-    public static ArrayList<GBase> GBasses = new ArrayList<GBase>();
+    public static CopyOnWriteArrayList<GBase> GBasses = new CopyOnWriteArrayList<GBase>();
     public static final float GRAVITY = 3;
 }

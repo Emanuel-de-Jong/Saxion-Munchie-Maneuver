@@ -3,13 +3,11 @@ class GBase {
         Globals.GBasses.add(this);
     }
 
-    protected void finalize() {
+    public void destroy() {
         Globals.GBasses.remove(this);
     }
 
     public void draw() {}
-
-    public void update() {}
   
     public void keyPressed() {}
   

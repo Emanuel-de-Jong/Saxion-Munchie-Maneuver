@@ -5,8 +5,8 @@ class FoodLineCircle extends GObject {
         GShapes.add(new GShapeCircle(this, 5, 5, 10));
     }
     
-    public void update() {
-        super.update();
+    public void draw() {
+        super.draw();
         
         Coords.y += Globals.GRAVITY;
     }

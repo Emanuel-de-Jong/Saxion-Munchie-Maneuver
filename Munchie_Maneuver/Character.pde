@@ -7,8 +7,8 @@ class Character extends GObject {
         setImg("Character.png", 100, 80);
     }
     
-    public void update() {
-        super.update();
+    public void draw() {
+        super.draw();
         
         if (KeyManager.KeysDown['A']) {
             Coords.x -= Speed;

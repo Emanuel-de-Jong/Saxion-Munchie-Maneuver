@@ -1,15 +1,9 @@
 final float FRAME_RATE = 60;
-final float UPDATE_RATE = 100;
-
-Thread updateThread;
 
 KeyManager keyManager;
 Game game;
 
 void setup() {
-    updateThread = new Thread(() -> update());
-    updateThread.start();
-
     frameRate(FRAME_RATE);
     
     size(800, 600);
@@ -23,25 +17,23 @@ void setup() {
 void draw() {
     background(255);
     
-    Globals.GBasses.forEach(gBase -> gBase.draw());
-}
-
-void update() {
-    while (true) {
-        Globals.GBasses.forEach(gBase -> gBase.update());
-        
-        delay(int(1 / UPDATE_RATE * 1000));
+    for (GBase gBase : Globals.GBasses) {
+        gBase.draw();
     }
 }
 
 void keyPressed() {
     KeyManager.keyPressed(keyCode);
     
-    Globals.GBasses.forEach(gBase -> gBase.keyPressed());
+    for (GBase gBase : Globals.GBasses) {
+        gBase.keyPressed();
+    }
 } 
 
 void keyReleased() {
     KeyManager.keyReleased(keyCode);
     
-    Globals.GBasses.forEach(gBase -> gBase.keyReleased());
+    for (GBase gBase : Globals.GBasses) {
+        gBase.keyReleased();
+    }
 }

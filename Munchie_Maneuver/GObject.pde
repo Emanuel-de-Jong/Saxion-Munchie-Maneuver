@@ -13,6 +13,12 @@ class GObject extends GBase {
         
         GShapes = new ArrayList<GShape>();
     }
+
+    public void destroy() {
+        super.destroy();
+        
+        GShapes.forEach(gShape -> gShape.destroy());
+    }
     
     public void setImg(String imgPath, float imgWidth, float imgHeight) {
         Img = loadImage("Assets/Images/" + imgPath);
