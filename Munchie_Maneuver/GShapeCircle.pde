@@ -1,9 +1,9 @@
 class GShapeCircle extends GShape {
     public float Size;
-    
-    public GShapeCircle(GObject parent, float x1, float y1, float size) {
-        super(parent, x1, y1);
-        
+
+    public GShapeCircle(GObject parent, float x1, float y1, color _color, float size) {
+        super(parent, x1, y1, _color);
+
         Size = size;
     }
     
@@ -12,7 +12,7 @@ class GShapeCircle extends GShape {
         
         stroke(0);
         strokeWeight(3);
-        fill(color(0,0,0));
+        fill(Color);
         circle(Parent.Coords.x + Coords1.x, Parent.Coords.y + Coords1.y, Size);
     }
 }

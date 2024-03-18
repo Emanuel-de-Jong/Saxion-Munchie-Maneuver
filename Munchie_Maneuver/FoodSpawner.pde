@@ -1,14 +1,14 @@
 class FoodSpawner extends GBase {
-    public ArrayList<FoodLineCircle> FoodLineCircles = new ArrayList<FoodLineCircle>();
+    public ArrayList<Food> Foods = new ArrayList<Food>();
     public float speed = 5;
     public int direction = 1;
     public int spawnRate = 200;
 
-    private int lastFoodLineCircleSpawn;
+    private int lastFoodSpawn;
     private int x = width / 2;
 
     public FoodSpawner() {
-        lastFoodLineCircleSpawn = millis();
+        lastFoodSpawn = millis();
     }
 
     public void draw() {
@@ -27,19 +27,19 @@ class FoodSpawner extends GBase {
             direction = -1;
         }
         
-        if (millis() - lastFoodLineCircleSpawn > spawnRate) {
-            lastFoodLineCircleSpawn = millis();
-            FoodLineCircles.add(new FoodLineCircle(x, 0));
+        if (millis() - lastFoodSpawn > spawnRate) {
+            lastFoodSpawn = millis();
+            Foods.add(new FoodSmall(x, 0));
         }
 
-        ArrayList<FoodLineCircle> circlesToDel = new ArrayList<FoodLineCircle>();
-        for (FoodLineCircle circle : FoodLineCircles) {
+        ArrayList<Food> circlesToDel = new ArrayList<Food>();
+        for (Food circle : Foods) {
             if (circle.Coords.y < height + 10) continue;
             circlesToDel.add(circle);
         }
 
-        for (FoodLineCircle circle : circlesToDel) {
-            FoodLineCircles.remove(circle);
+        for (Food circle : circlesToDel) {
+            Foods.remove(circle);
             circle.destroy();
         }
     }
