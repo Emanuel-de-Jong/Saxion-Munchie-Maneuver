@@ -4,6 +4,7 @@ class FoodBig extends Food {
         
         setImg(Assets.FoodImgs.get(floor(random(9))), 75, 75);
 
-        GShapes.add(new GShapeCircle(this, ImgSize.x / 2, ImgSize.y / 2, color(255, 0, 0, 100), Radius * 2));
+        // Visualizes collision
+        // GShapes.add(new GShapeCircle(this, ImgSize.x / 2, ImgSize.y / 2, color(255, 0, 0, 100), Radius * 2));
     }
 }

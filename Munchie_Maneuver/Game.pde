@@ -1,9 +1,16 @@
+import ddf.minim.*;
+
 class Game extends GBase {
     public Character MainCharacter;
 
     private FoodSpawner foodSpawner;
+    private AudioSample coinCollectPlayer;
+    private AudioSample EatPlayer;
     
     public Game() {
+        coinCollectPlayer = Globals.minim.loadSample(dataPath("/audio/CoinCollect.mp3"), 512);
+        EatPlayer = Globals.minim.loadSample(dataPath("/audio/Eat.mp3"), 512);
+
         MainCharacter = new Character(width / 2, 0);
         MainCharacter.Coords.y = height - MainCharacter.ImgSize.y;
 
@@ -30,6 +37,14 @@ class Game extends GBase {
 
             if (dist(characterX, characterY, foodX, foodY) < MainCharacter.Radius + food.Radius) {
                 foodsToDel.add(food);
+
+                MainCharacter.Points += food.Points;
+
+                if (food instanceof FoodBig) {
+                    EatPlayer.trigger();
+                } else {
+                    // coinCollectPlayer.trigger();
+                }
             }
         }
 

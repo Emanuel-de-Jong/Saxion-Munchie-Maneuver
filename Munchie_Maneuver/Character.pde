@@ -1,5 +1,6 @@
 class Character extends GObject {
-    public float Speed = 3;
+    public int Points = 0;
+    public float Speed = 6;
     public float Radius = 42.5;
     
     public Character(float x, float y) {
@@ -7,7 +8,8 @@ class Character extends GObject {
         
         setImg(Assets.CharacterImg, 150, 82.5);
 
-        GShapes.add(new GShapeCircle(this, ImgSize.x / 2, ImgSize.y / 2, color(0, 255, 0, 100), Radius * 2));
+        // Visualizes collision
+        // GShapes.add(new GShapeCircle(this, ImgSize.x / 2, ImgSize.y / 2, color(0, 255, 0, 100), Radius * 2));
     }
     
     public void draw() {
@@ -19,6 +21,10 @@ class Character extends GObject {
         if (KeyManager.KeysDown['D']) {
             Coords.x += Speed;
         }
+
+        fill(0);
+        textSize(36);
+        text(str(Points), 10, 40);
     }
 
     public void mouseMoved() {

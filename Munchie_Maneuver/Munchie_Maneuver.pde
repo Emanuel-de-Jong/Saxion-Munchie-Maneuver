@@ -3,8 +3,7 @@ import ddf.minim.*;
 final float FRAME_RATE = 100;
 
 KeyManager keyManager;
-Minim minim;
-AudioPlayer audioPlayer;
+AudioPlayer musicPlayer;
 Game game;
 
 void setup() {
@@ -15,9 +14,10 @@ void setup() {
     Assets.init(this);
     keyManager = new KeyManager();
     
-    minim = new Minim(this);
-    audioPlayer = minim.loadFile(dataPath("/audio/BackgroundMusic.mp3"));
-    audioPlayer.play();
+    Globals.minim = new Minim(this);
+
+    musicPlayer = Globals.minim.loadFile(dataPath("/audio/BackgroundMusic.mp3"));
+    musicPlayer.play();
     
     game = new Game();
 }
