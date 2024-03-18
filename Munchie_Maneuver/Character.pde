@@ -1,10 +1,11 @@
 class Character extends GObject {
     public float Speed = 3;
+    public float Radius = 85;
     
     public Character(float x, float y) {
         super(x, y);
         
-        setImg(Assets.CharacterImg, 100, 80);
+        setImg(Assets.CharacterImg, 150, 82.5);
     }
     
     public void draw() {

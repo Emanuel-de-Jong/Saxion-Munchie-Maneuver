@@ -15,31 +15,20 @@ class Game extends GBase {
         
         ArrayList<Food> foodsToDel = new ArrayList<Food>();
 
-        float characterX1 = MainCharacter.Coords.x;
-        float characterX2 = characterX1 + MainCharacter.ImgSize.x;
+        float characterX = MainCharacter.Coords.x + MainCharacter.ImgSize.x / 2;
+        float characterY = MainCharacter.Coords.y + MainCharacter.ImgSize.y / 2;
         for (Food food : foodSpawner.Foods) {
             if (food.Coords.y < MainCharacter.Coords.y) continue;
 
-            boolean isSmallFood = false;
-            if (food instanceof FoodSmall) {
-                isSmallFood = true;
+            float foodX = food.Coords.x;
+            float foodY = food.Coords.y;
+
+            if (food instanceof FoodBig) {
+                foodX += food.ImgSize.x / 2;
+                foodY += food.ImgSize.y / 2;
             }
 
-            float foodX1 = food.Coords.x;
-            if (isSmallFood) {
-                foodX1 -= 10;
-            }
-
-            float foodX2 = foodX1;
-
-            if (isSmallFood) {
-                foodX2 += 20;
-            } else {
-                foodX2 += food.ImgSize.x;
-            }
-
-            if (foodX1 >= characterX1 && foodX1 <= characterX2 ||
-                foodX1 >= characterX1 && foodX1 <= characterX2) {
+            if (dist(characterX, characterY, foodX, foodY) < MainCharacter.Radius + food.Radius) {
                 foodsToDel.add(food);
             }
         }

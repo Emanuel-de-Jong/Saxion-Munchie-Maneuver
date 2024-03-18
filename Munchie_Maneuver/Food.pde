@@ -1,8 +1,8 @@
 class Food extends GObject {
     public int Points;
-    public int Radius;
+    public float Radius;
     
-    public Food(float x, float y, int points, int radius) {
+    public Food(float x, float y, int points, float radius) {
         super(x, y);
 
         Points = points;
