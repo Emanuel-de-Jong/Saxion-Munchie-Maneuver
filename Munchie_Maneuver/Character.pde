@@ -4,7 +4,7 @@ class Character extends GObject {
     public Character(float x, float y) {
         super(x, y);
         
-        setImg("Character.png", 100, 80);
+        setImg(Assets.CharacterImg, 100, 80);
     }
     
     public void draw() {

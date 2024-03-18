@@ -19,10 +19,14 @@ class GObject extends GBase {
         
         GShapes.forEach(gShape -> gShape.destroy());
     }
+
+    public void setImg(PImage img, float imgWidth, float imgHeight) {
+        Img = img;
+        ImgSize = new PVector(imgWidth, imgHeight);
+    }
     
     public void setImg(String imgPath, float imgWidth, float imgHeight) {
-        Img = loadImage(dataPath("/imgs/" + imgPath));
-        ImgSize = new PVector(imgWidth, imgHeight);
+        setImg(loadImage(dataPath("/imgs/" + imgPath)), imgWidth, imgHeight);
     }
     
     public void draw() {

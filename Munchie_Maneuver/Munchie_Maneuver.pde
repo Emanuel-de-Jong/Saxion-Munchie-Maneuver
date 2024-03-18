@@ -11,9 +11,8 @@ void setup() {
     frameRate(FRAME_RATE);
     
     size(800, 600);
-    fill(0, 0, 255);
-    stroke(0, 255, 255);
 
+    Assets.init(this);
     keyManager = new KeyManager();
     
     minim = new Minim(this);
@@ -24,7 +23,7 @@ void setup() {
 }
 
 void draw() {
-    background(255);
+    background(200);
     
     for (GBase gBase : Globals.GBasses) {
         gBase.draw();

@@ -11,7 +11,7 @@ class GShapeCircle extends GShape {
         super.draw();
         
         stroke(0);
-        strokeWeight(3);
+        strokeWeight(2);
         fill(Color);
         circle(Parent.Coords.x + Coords1.x, Parent.Coords.y + Coords1.y, Size);
     }
