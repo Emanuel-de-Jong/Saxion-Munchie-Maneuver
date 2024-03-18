@@ -42,15 +42,15 @@ class FoodSpawner extends GBase {
             }
         }
 
-        ArrayList<Food> circlesToDel = new ArrayList<Food>();
-        for (Food circle : Foods) {
-            if (circle.Coords.y < height + 10) continue;
-            circlesToDel.add(circle);
+        ArrayList<Food> foodsToDel = new ArrayList<Food>();
+        for (Food food : Foods) {
+            if (food.Coords.y < height + 100) continue;
+            foodsToDel.add(food);
         }
 
-        for (Food circle : circlesToDel) {
-            Foods.remove(circle);
-            circle.destroy();
+        for (Food food : foodsToDel) {
+            Foods.remove(food);
+            food.destroy();
         }
     }
 }
