@@ -2,10 +2,13 @@ class FoodSpawner extends GBase {
     public ArrayList<Food> Foods = new ArrayList<Food>();
     public float speed = 5;
     public int direction = 1;
-    public int spawnRate = 500;
+    public int spawnRate = 250;
+
+    private final int SPACING = 80;
 
     private int lastFoodSpawn;
     private int x = width / 2;
+    private int spawnCount = 0;
 
     public FoodSpawner() {
         lastFoodSpawn = millis();
@@ -20,16 +23,23 @@ class FoodSpawner extends GBase {
             direction *= -1;
         }
 
-        if (x < 10) {
+        if (x < SPACING) {
             direction = 1;
         }
-        else if (x > width - 10) {
+        else if (x > width - SPACING) {
             direction = -1;
         }
         
         if (millis() - lastFoodSpawn > spawnRate) {
             lastFoodSpawn = millis();
-            Foods.add(new FoodBig(x, 0));
+
+            spawnCount++;
+
+            if (spawnCount % 4 == 0) {
+                Foods.add(new FoodBig(x, 0));
+            } else {
+                Foods.add(new FoodSmall(x, 0));
+            }
         }
 
         ArrayList<Food> circlesToDel = new ArrayList<Food>();
