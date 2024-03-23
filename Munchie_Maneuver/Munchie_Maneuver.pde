@@ -21,11 +21,11 @@ void setup() {
 
     Globals.BackgroundMusicPlayer = Globals.minim.loadFile(dataPath("/audio/BackgroundMusic.mp3"));
     Globals.BackgroundMusicBoostModePlayer = Globals.minim.loadFile(dataPath("/audio/BackgroundMusicBoostMode.mp3"));
-
-    Globals.BackgroundMusicPlayer.play();
     
     background = new Background();
     game = new Game();
+
+    Globals.BackgroundMusicPlayer.play();
 }
 
 void draw() {
