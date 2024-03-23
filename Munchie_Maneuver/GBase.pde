@@ -1,4 +1,16 @@
 class GBase {
+    public int Layer = 0;
+
+    private boolean off = false;
+
+    public boolean getOff() {
+        return off;
+    }
+
+    public void setOff(boolean value) {
+        off = value;
+    }
+
     public GBase() {
         Globals.GBasses.add(this);
     }

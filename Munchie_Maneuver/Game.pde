@@ -4,6 +4,7 @@ class Game extends GBase {
     public Character MainCharacter;
 
     private FoodSpawner foodSpawner;
+    private ResultPopup resultPopup;
     private AudioSample coinCollectPlayer;
     private AudioSample EatPlayer;
     
@@ -15,6 +16,7 @@ class Game extends GBase {
         MainCharacter.Coords.y = height - MainCharacter.ImgSize.y;
 
         foodSpawner = new FoodSpawner();
+        resultPopup = new ResultPopup();
     }
 
     public void draw() {

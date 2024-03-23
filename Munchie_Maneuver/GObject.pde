@@ -20,6 +20,12 @@ class GObject extends GBase {
         GShapes.forEach(gShape -> gShape.destroy());
     }
 
+    public void setOff(boolean value) {
+        super.setOff(value);
+
+        GShapes.forEach(gShape -> gShape.setOff(value));
+    }
+
     public void setImg(PImage img, float imgWidth, float imgHeight) {
         Img = img;
         ImgSize = new PVector(imgWidth, imgHeight);

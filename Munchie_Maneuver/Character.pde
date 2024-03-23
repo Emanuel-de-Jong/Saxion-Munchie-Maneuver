@@ -28,6 +28,8 @@ class Character extends GObject {
     }
 
     public void mouseMoved() {
+        super.mouseMoved();
+        
         Coords.x = mouseX - (ImgSize.x / 2);
     }
 }

@@ -1,4 +1,6 @@
 import ddf.minim.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 final float FRAME_RATE = 100;
 
@@ -25,7 +27,16 @@ void setup() {
 void draw() {
     background(200);
     
-    for (GBase gBase : Globals.GBasses) {
+    // Filter GBasses that are off.
+    List<GBase> gBasses = Globals.GBasses
+        .stream()
+        .filter(gb -> gb.getOff() == false)
+        .collect(Collectors.toList());
+    
+    // Sort by layer for drawing order.
+    gBasses.sort((gb1, gb2) -> Integer.compare(gb1.Layer, gb2.Layer));
+
+    for (GBase gBase : gBasses) {
         gBase.draw();
     }
 }
