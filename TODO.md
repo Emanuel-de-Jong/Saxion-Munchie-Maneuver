@@ -1,8 +1,1 @@
-- Bonus mode
-    - Activated by spacebar
-    - Food falls faster
-    - Point multiplier
-- Change background depending on IRL weather
-- Win screen after X points collected
-    - Display points
-    - Restart button
+
