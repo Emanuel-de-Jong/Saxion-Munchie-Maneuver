@@ -6,7 +6,9 @@ class Background extends GObject {
 
         Layer = -100;
 
-        JSONObject weather = loadJSONObject("https://api.pirateweather.net/forecast/[API_KEY]/52.219812,6.894257?exclude=minutely,hourly,daily,alerts");
+        String apiKey = loadStrings(dataPath("WeatherAPI.txt"))[0];
+
+        JSONObject weather = loadJSONObject("https://api.pirateweather.net/forecast/" + apiKey + "/52.219812,6.894257?exclude=minutely,hourly,daily,alerts");
         JSONObject currentWeather = weather.getJSONObject("currently");
         float rain = currentWeather.getFloat("precipIntensity");
         float clouds = currentWeather.getFloat("cloudCover");
