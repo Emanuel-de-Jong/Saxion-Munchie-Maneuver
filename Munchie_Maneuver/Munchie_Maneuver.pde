@@ -6,6 +6,7 @@ final float FRAME_RATE = 100;
 
 KeyManager keyManager;
 AudioPlayer musicPlayer;
+Background background;
 Game game;
 
 void setup() {
@@ -23,12 +24,11 @@ void setup() {
 
     Globals.BackgroundMusicPlayer.play();
     
+    background = new Background();
     game = new Game();
 }
 
 void draw() {
-    background(200);
-    
     // Filter GBasses that are off.
     List<GBase> gBasses = Globals.GBasses
         .stream()
