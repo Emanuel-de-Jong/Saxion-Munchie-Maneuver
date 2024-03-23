@@ -18,8 +18,10 @@ void setup() {
     
     Globals.minim = new Minim(this);
 
-    musicPlayer = Globals.minim.loadFile(dataPath("/audio/BackgroundMusic.mp3"));
-    musicPlayer.play();
+    Globals.BackgroundMusicPlayer = Globals.minim.loadFile(dataPath("/audio/BackgroundMusic.mp3"));
+    Globals.BackgroundMusicBoostModePlayer = Globals.minim.loadFile(dataPath("/audio/BackgroundMusicBoostMode.mp3"));
+
+    Globals.BackgroundMusicPlayer.play();
     
     game = new Game();
 }

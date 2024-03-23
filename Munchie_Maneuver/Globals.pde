@@ -5,5 +5,8 @@ static class Globals {
     public static float Gravity = DEFAULT_GRAVITY;
 
     public static CopyOnWriteArrayList<GBase> GBasses = new CopyOnWriteArrayList<GBase>();
+
     public static Minim minim;
+    public static AudioPlayer BackgroundMusicPlayer;
+    public static AudioPlayer BackgroundMusicBoostModePlayer;
 }

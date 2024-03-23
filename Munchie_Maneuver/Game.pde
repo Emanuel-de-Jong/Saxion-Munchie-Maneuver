@@ -8,14 +8,14 @@ class Game extends GBase {
     private AudioSample coinCollectPlayer;
     private AudioSample EatPlayer;
 
-    private static final int POINTS_TO_WIN = 500;
+    private static final int POINTS_TO_WIN = 1_500;
     private static final int DEFAULT_LIFES = 5;
     private int lifes = DEFAULT_LIFES;
     private float scoreMultiplier = 1;
     private boolean isPaused = false;
 
-    private static final int BOOST_MODE_DURATION = 5000;
-    private static final int BOOST_MODE_COOLDOWN = 8000;
+    private static final int BOOST_MODE_DURATION = 8_000;
+    private static final int BOOST_MODE_COOLDOWN = 10_000;
     private boolean isBoostMode = false;
     private int lastBoostMode = 0;
     
@@ -32,14 +32,24 @@ class Game extends GBase {
 
     private void startBoostMode() {
         isBoostMode = true;
+
         Globals.Gravity = 8;
         scoreMultiplier = 1.5;
+
+        Globals.BackgroundMusicPlayer.pause();
+        Globals.BackgroundMusicPlayer.rewind();
+        Globals.BackgroundMusicBoostModePlayer.play();
     }
 
     private void stopBoostMode() {
         isBoostMode = false;
+
         Globals.Gravity = Globals.DEFAULT_GRAVITY;
         scoreMultiplier = 1;
+
+        Globals.BackgroundMusicBoostModePlayer.pause();
+        Globals.BackgroundMusicBoostModePlayer.rewind();
+        Globals.BackgroundMusicPlayer.play();
     }
 
     private void pause() {
@@ -83,7 +93,7 @@ class Game extends GBase {
     private void handleWin() {
         if (MainCharacter.Points >= POINTS_TO_WIN) {
             pause();
-            resultPopup.Win(MainCharacter.Points);
+            resultPopup.Win();
         }
     }
 

@@ -16,10 +16,10 @@ class ResultPopup extends GObject {
         setOff(true);
     }
 
-    public void Win(int points) {
+    public void Win() {
         if (getOff() == false) return;
 
-        title = "You win with " + points + " points!";
+        title = "You win!";
         setOff(false);
     }
 
