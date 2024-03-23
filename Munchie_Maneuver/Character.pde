@@ -14,13 +14,6 @@ class Character extends GObject {
     
     public void draw() {
         super.draw();
-        
-        if (KeyManager.KeysDown['A']) {
-            Coords.x -= Speed;
-        }
-        if (KeyManager.KeysDown['D']) {
-            Coords.x += Speed;
-        }
 
         fill(0);
         textSize(36);

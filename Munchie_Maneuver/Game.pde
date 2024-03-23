@@ -11,7 +11,13 @@ class Game extends GBase {
     private static final int POINTS_TO_WIN = 500;
     private static final int DEFAULT_LIFES = 5;
     private int lifes = DEFAULT_LIFES;
+    private float scoreMultiplier = 1;
     private boolean isPaused = false;
+
+    private static final int BOOST_MODE_DURATION = 5000;
+    private static final int BOOST_MODE_COOLDOWN = 8000;
+    private boolean isBoostMode = false;
+    private int lastBoostMode = 0;
     
     public Game() {
         coinCollectPlayer = Globals.minim.loadSample(dataPath("/audio/CoinCollect.mp3"), 512);
@@ -22,6 +28,18 @@ class Game extends GBase {
 
         foodSpawner = new FoodSpawner();
         resultPopup = new ResultPopup();
+    }
+
+    private void startBoostMode() {
+        isBoostMode = true;
+        Globals.Gravity = 8;
+        scoreMultiplier = 1.5;
+    }
+
+    private void stopBoostMode() {
+        isBoostMode = false;
+        Globals.Gravity = Globals.DEFAULT_GRAVITY;
+        scoreMultiplier = 1;
     }
 
     private void pause() {
@@ -48,6 +66,8 @@ class Game extends GBase {
         handleWin();
         handleLoss();
         handleFoodCollision();
+        handleBoostMode();
+        drawBoostModeCooldown();
     }
 
     private void calcLifes() {
@@ -93,7 +113,7 @@ class Game extends GBase {
             if (dist(characterX, characterY, foodX, foodY) < MainCharacter.Radius + food.Radius) {
                 foodsToDel.add(food);
 
-                MainCharacter.Points += food.Points;
+                MainCharacter.Points += food.Points * scoreMultiplier;
 
                 if (food instanceof FoodBig) {
                     EatPlayer.trigger();
@@ -106,6 +126,34 @@ class Game extends GBase {
         for (Food food : foodsToDel) {
             foodSpawner.Foods.remove(food);
             food.destroy();
+        }
+    }
+
+    private void handleBoostMode() {
+        if (isBoostMode) {
+            if (millis() - lastBoostMode > BOOST_MODE_DURATION) {
+                lastBoostMode = millis();
+                stopBoostMode();
+            }
+        } else if (KeyManager.KeysDown[32]) { // If spacebar was pressed
+            if (millis() - lastBoostMode > BOOST_MODE_COOLDOWN) {
+                lastBoostMode = millis();
+                startBoostMode();
+            }
+        }
+    }
+
+    private void drawBoostModeCooldown() {
+        fill(0);
+        textSize(36);
+
+        if (isBoostMode) {
+            int boostModeLeft = Math.round((BOOST_MODE_DURATION - (millis() - lastBoostMode)) / 1000);
+            text("BM Left: " + boostModeLeft, 10, 120);
+        } else {
+            int boostCooldown = Math.round((BOOST_MODE_COOLDOWN - (millis() - lastBoostMode)) / 1000);
+            String text = boostCooldown >= 0 ? str(boostCooldown) : "Ready";
+            text("BM Cooldown: " + text, 10, 120);
         }
     }
 }
