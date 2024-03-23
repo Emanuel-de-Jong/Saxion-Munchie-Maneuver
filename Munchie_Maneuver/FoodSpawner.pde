@@ -3,6 +3,7 @@ class FoodSpawner extends GBase {
     public float speed = 5;
     public int direction = 1;
     public int spawnRate = 250;
+    public int UncaughtBigFoods = 0;
 
     private final int SPACING = 80;
 
@@ -12,6 +13,12 @@ class FoodSpawner extends GBase {
 
     public FoodSpawner() {
         lastFoodSpawn = millis();
+    }
+
+    public void setOff(boolean value) {
+        super.setOff(value);
+
+        Foods.forEach(food -> food.setOff(value));
     }
 
     public void draw() {
@@ -45,7 +52,11 @@ class FoodSpawner extends GBase {
         ArrayList<Food> foodsToDel = new ArrayList<Food>();
         for (Food food : Foods) {
             if (food.Coords.y < height + 100) continue;
+
             foodsToDel.add(food);
+            if (food instanceof FoodBig) {
+                UncaughtBigFoods++;
+            }
         }
 
         for (Food food : foodsToDel) {

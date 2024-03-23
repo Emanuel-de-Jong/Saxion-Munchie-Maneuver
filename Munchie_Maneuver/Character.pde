@@ -24,7 +24,7 @@ class Character extends GObject {
 
         fill(0);
         textSize(36);
-        text(str(Points), 10, 40);
+        text("Points: " + Points, 10, 40);
     }
 
     public void mouseMoved() {

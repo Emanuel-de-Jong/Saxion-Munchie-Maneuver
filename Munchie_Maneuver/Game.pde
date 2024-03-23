@@ -7,6 +7,11 @@ class Game extends GBase {
     private ResultPopup resultPopup;
     private AudioSample coinCollectPlayer;
     private AudioSample EatPlayer;
+
+    private static final int POINTS_TO_WIN = 500;
+    private static final int DEFAULT_LIFES = 5;
+    private int lifes = DEFAULT_LIFES;
+    private boolean isPaused = false;
     
     public Game() {
         coinCollectPlayer = Globals.minim.loadSample(dataPath("/audio/CoinCollect.mp3"), 512);
@@ -19,9 +24,57 @@ class Game extends GBase {
         resultPopup = new ResultPopup();
     }
 
+    private void pause() {
+        isPaused = true;
+
+        foodSpawner.setOff(true);
+        MainCharacter.setOff(true);
+    }
+
+    private void resume() {
+        isPaused = false;
+
+        foodSpawner.setOff(false);
+        MainCharacter.setOff(false);
+    }
+
     public void draw() {
         super.draw();
-        
+
+        if (isPaused) return;
+
+        calcLifes();
+        drawLifes();
+        handleWin();
+        handleLoss();
+        handleFoodCollision();
+    }
+
+    private void calcLifes() {
+        lifes = DEFAULT_LIFES - foodSpawner.UncaughtBigFoods;
+    }
+
+    private void drawLifes() {
+        fill(0);
+        textSize(36);
+        text("Lifes: " + lifes, 10, 80);
+    }
+
+    private void handleWin() {
+        if (MainCharacter.Points >= POINTS_TO_WIN) {
+            pause();
+            resultPopup.Win(MainCharacter.Points);
+        }
+    }
+
+    private void handleLoss() {
+        if (lifes <= 0) {
+            pause();
+            resultPopup.Loss();
+        }
+    }
+
+    private void handleFoodCollision() {
         ArrayList<Food> foodsToDel = new ArrayList<Food>();
 
         float characterX = MainCharacter.Coords.x + MainCharacter.ImgSize.x / 2;

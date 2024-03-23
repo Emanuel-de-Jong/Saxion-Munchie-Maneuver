@@ -12,6 +12,6 @@ class Food extends GObject {
     public void draw() {
         super.draw();
         
-        Coords.y += Globals.GRAVITY;
+        Coords.y += Globals.Gravity;
     }
 }
